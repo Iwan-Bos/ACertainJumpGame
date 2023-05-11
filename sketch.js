@@ -1,12 +1,22 @@
-function setup()
+function preload()
 {
-    createCanvas(640,1136);
-    background(255, 255, 255);
+    // load assets
+    platformGreen = loadImage("assets/platformGreen.png");
+}
+
+function setup()
+{   
+    createCanvas(640, 1136, WEBGL);
+    //camera(0, 0, 30);
+    ortho();
 }
 
 function draw()
 {
-    
+   background(240);
+
+   texture(platformGreen);
+   box(100, 20, 100);
 }
 
 /*
