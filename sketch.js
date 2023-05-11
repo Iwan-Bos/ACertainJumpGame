@@ -9,6 +9,12 @@ function setup()
     createCanvas(640, 1136, WEBGL);
     //camera(0, 0, 30);
     ortho();
+
+    // create player
+    var player = new Player(0, 0);
+
+    // player function test
+    player.isAlive();
 }
 
 function draw()
