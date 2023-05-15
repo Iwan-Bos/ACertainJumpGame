@@ -7,8 +7,11 @@ function preload()
 function setup()
 {   
     createCanvas(640, 1136, WEBGL);
-    //camera(0, 0, 30);
-    ortho();
+    background(240);
+
+    cam = createCamera();
+    //cam.ortho();
+    //cam.tilt(-100);
 
     // create player
     var player = new Player(0, 0);
@@ -19,10 +22,10 @@ function setup()
 
 function draw()
 {
-   background(240);
-
-   texture(platformGreen);
-   box(100, 20, 100);
+    background(240);
+    
+    texture(platformGreen);
+    box(100, 20, 100);
 }
 
 /*
