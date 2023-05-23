@@ -1,53 +1,53 @@
-class MyScene extends Scene {
+// class MyScene extends Scene {
 
-	constructor() {
+// constructor() {
 
-	}
+// }
 
-	// they don't like being in the class scope on their own.
-	prison() {
+// they don't like being in the class scope on their own.
+// prison() {
 
-		// stops the right context click menu from appearing
-		document.oncontextmenu = () => false;
+// stops the right context click menu from appearing
+document.oncontextmenu = () => false;
 
-		// initial camera state parameters(? Idk if this is the right word).
-		var cam,
-			state = {
-				distance: 1000,
-				center: [0, 0, 0],
-				rotation: [0, 0, .05, 0.85]
-			};
-	}
+// initial camera state parameters(? Idk if this is the right word).
+var cam,
+	state = {
+		distance: 1000,
+		center: [0, 0, 0],
+		rotation: [0, 0, 0, 0.85]
+	};
+// }
 
-	setup() {
+function setup() {
 
-		// create canvas, WEBGL for 3D, omit for 2D(, WEBGL disables 2D functions).
-		createCanvas(1600, 900, WEBGL);
+	// create canvas, WEBGL for 3D, omit for 2D(, WEBGL disables 2D functions).
+	createCanvas(1600, 900, WEBGL);
 
-		// initialize the camera.
-		cam = createEasyCam();
+	// initialize the camera.
+	cam = createEasyCam();
 
-		// set initial camera state
-		cam.setState(state, 0); // animate to state in 2 second
-		cam.state_reset = state;   // state to use on reset
+	// set initial camera state
+	cam.setState(state, 0); // animate to state in 2 second
+	cam.state_reset = state;   // state to use on reset
 
-		// get the ResourceManager ova here.
-		RM = ResourceManager.getInstance();
+	// get the ResourceManager ova here.
+	RM = ResourceManager.getInstance();
 
-		// load resources for this scene
-		platformGreen = RM.loadTexture("assets/platformGreen.png");
-	}
-
-	draw() {
-
-		// draw background each draw call, acts as a canvas clearer.
-		background(240);
-
-		texture(platformGreen);
-		box(100, 20, 100);
-	}
-
+	// load resources for this scene
+	platformGreen = RM.loadTexture("assets/platformGreen.png");
 }
+
+function draw() {
+
+	// draw background each draw call, acts as a canvas clearer.
+	background(240);
+
+	texture(platformGreen);
+	box(100, 20, 100);
+}
+
+// }
 
 /*
 divided in slices,
