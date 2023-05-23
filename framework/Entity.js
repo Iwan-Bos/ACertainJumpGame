@@ -4,6 +4,7 @@ class Entity {
     constructor() {
         this.posX = posX;
         this.posY = posY;
+        this.rotZ = rotZ;
     }
 
     // log position of entity in console

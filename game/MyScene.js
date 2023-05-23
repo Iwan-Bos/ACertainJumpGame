@@ -4,12 +4,13 @@ class MyScene extends Scene {
 
 	}
 
-
-	aaaaaa() {
+	// they don't like being in the class scope on their own.
+	prison() {
 
 		// stops the right context click menu from appearing
 		document.oncontextmenu = () => false;
 
+		// initial camera state parameters(? Idk if this is the right word).
 		var cam,
 			state = {
 				distance: 1000,
@@ -20,7 +21,7 @@ class MyScene extends Scene {
 
 	setup() {
 
-		// create canvas, WEBGL for 3D, omit for 2D(, disables 2D functions).
+		// create canvas, WEBGL for 3D, omit for 2D(, WEBGL disables 2D functions).
 		createCanvas(1600, 900, WEBGL);
 
 		// initialize the camera.
