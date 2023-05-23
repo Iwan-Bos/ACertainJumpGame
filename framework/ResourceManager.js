@@ -1,4 +1,5 @@
 class ResourceManager {
+
 	constructor() { }
 
 	// make a new instance when absent and return it.
@@ -16,4 +17,5 @@ class ResourceManager {
 			// console.warn("Failed to load texture: " + path)
 		);
 	}
+
 }
