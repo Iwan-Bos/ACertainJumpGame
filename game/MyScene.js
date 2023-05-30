@@ -4,10 +4,11 @@ class MyScene extends Scene {
 
 		super(width, height);
 
-		background(250);
-
 		// stops the right context click menu from appearing
 		document.oncontextmenu = () => false;
+	}
+
+	setupScene() {
 
 		// initial camera state parameters(? Idk if this is the right word).
 		var cam,
@@ -16,9 +17,6 @@ class MyScene extends Scene {
 				center: [0, 0, 0],
 				rotation: [0, 0, 0, 0.85]
 			};
-	}
-
-	setup() {
 
 		// initialize the camera.
 		cam = createEasyCam();
@@ -34,10 +32,10 @@ class MyScene extends Scene {
 		platformGreen = RM.loadTexture("assets/platformGreen.png");
 	}
 
-	draw() {
+	drawScene() {
 
 		// draw background each draw call, acts as a canvas clearer.
-		// background(240);
+		background(250);
 
 		texture(platformGreen);
 		box(100, 20, 100);
