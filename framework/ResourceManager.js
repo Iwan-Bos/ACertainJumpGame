@@ -5,7 +5,7 @@ class ResourceManager {
 	}
 
 	// make a new instance when absent and return it.
-	static getInstance() {
+	getInstance() {
 		if (!ResourceManager.instance) {
 			ResourceManager.instance = new ResourceManager();
 		}
