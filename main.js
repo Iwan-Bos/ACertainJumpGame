@@ -1,13 +1,11 @@
-var myScene
-
 function setup() {
-
+    // create the scene in which all will take place.
     myScene = new MyScene(1600, 900);
-
-    myScene.setupScene();
+    // call MyScene.setupScene().
+    myScene.setup();
 }
 
 function draw() {
-
-    myScene.drawScene();
+    // call MyScene.draw().
+    myScene.draw();
 }
