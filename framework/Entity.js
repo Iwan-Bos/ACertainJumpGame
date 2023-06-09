@@ -1,8 +1,12 @@
 class Entity {
     constructor(posX, posY, rotZ) {
-        this.posX = posX;
-        this.posY = posY;
-        this.rotZ = rotZ;
+        // list of children
+        this.children = [];
+        // get the ResourceManager in here.
+        this.RM = ResourceManager.getInstance();
     }
 
+    draw() {
+
+    }
 }
