@@ -1,47 +1,22 @@
 class Platform extends Entity {
-    constructor(posX, posY, type) {
+    constructor(posX, posY, width, height) {
         // super calls the parent constructor.
-        super(posX, posY, 0);
+        super(posX, posY, undefined, width, height);
         this.posX = posX;
         this.posY = posY;
-        this.type = type;
+        this.width = width;
+        this.height = height;
     }
 
     draw() {
         // get texture for box using the ResourceManager.
-        switch (this.type) {
-            case this.green:
-                texture(this.RM.loadTexture("assets/platformGreen.png"));
-                break;
-            case this.brown:
-                texture(this.RM.loadTexture("assets/platformBrown.png"));
-                break;
-            case this.blue:
-                texture(this.RM.loadTexture("assets/platformBlue.png"));
-                break;
-            default:
-                break;
-        }
-        translate(this.posX, this.posY);
-        box(100, 20, 100);
+        // texture(this.RM.loadTexture("assets/platformGreen.png"));
+        // translate(this.posX, this.posY);
+        // box(100, 20, 100);
+        rect(this.posX - this.width / 2,
+            this.posY - this.height / 2,
+            this.width,
+            this.height
+        );
     }
-
-    // ### platforms have ###
-    // - a set size
-    // - 3 variants:
-    //      - green, does absolutely nothing and dies.
-    //      - blue, moves from left to right.
-    //      - brown, breaks when stepped on.
-    // - a small chance to contain a powerup.
-
-    // ### platform logic ###
-    // divided in slices,
-    // - each slice can be generated on function call.
-    // - each slice has a chance to be a moving platform slice or a normal slice,
-    //      - each moving platform slice exists out of 2 spawn spaces 
-    //          where a blue platform can spawn or not with at least one spawning,
-    //      - each normal slice exists out of a set amount of preset positions on which platforms
-    //          can either spawn or not spawn.
-    //              - after the spawn check there's a chance it becomes a brown platform. 
-    //      - these slice platforms have a chance to contain a powerup.
 }
