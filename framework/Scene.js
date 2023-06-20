@@ -1,3 +1,5 @@
+"use strict"
+
 class Scene extends Entity {
     // Scene constructor.
     constructor(width, height, posX, posY, rotZ) {

@@ -1,3 +1,5 @@
+"use strict"
+
 class ResourceManager {
 	constructor() {
 		// textures that were loaded before are stored in here.

@@ -1,3 +1,5 @@
+"use strict"
+
 class Entity {
     constructor(posX, posY, rotZ, width, height) {
         // list of children

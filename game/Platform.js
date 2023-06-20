@@ -1,3 +1,5 @@
+"use strict"
+
 class Platform extends Entity {
     constructor(posX, posY, width, height, red, green, blue, move, destroy) {
         // super calls the parent constructor.
