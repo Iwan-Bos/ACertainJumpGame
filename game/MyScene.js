@@ -52,6 +52,7 @@ class MyScene extends Scene {
 		this.cameraMove();
 		this.wrapEdges();
 		this.regenPlats();
+		this.displayScore();
 	}
 
 	// generates a new platform with given parameters.
@@ -59,7 +60,6 @@ class MyScene extends Scene {
 		this.p = new Platform(posX, posY, 80, 18, red, green, blue, move, destroy);
 		this.plats.push(this.p);
 	}
-
 	// generates a platform with the genPlat function using randomized parameters.
 	genRandomPlat(posY) {
 		let rando = random(0, 100); // pseudo random number for different kinds of platforms chance.
@@ -77,7 +77,6 @@ class MyScene extends Scene {
 			this.genPlat(rando2, posY, 153, 204, 255, 1, 0);
 		}
 	}
-
 	regenPlats() {
 		for (let i = 0; i < this.plats.length; i++) {
 			// only check the bottom most platform
@@ -89,7 +88,6 @@ class MyScene extends Scene {
 			}
 		}
 	}
-
 	cameraMove() {
 		if (this.player.pos.y <= height / 2) {
 			if (this.vel.y < 0) { // jumping.
@@ -101,7 +99,6 @@ class MyScene extends Scene {
 			}
 		}
 	}
-
 	// does all the movement inluding jumping on platforms.
 	playerMove() {
 		deltaTime = deltaTime / 100; // change deltaTime for the values to have less decimals.
@@ -141,7 +138,6 @@ class MyScene extends Scene {
 			}
 		}
 	}
-
 	// makes player appear on the left side when exiting on the right and so forth.
 	wrapEdges() {
 		if (this.player.pos.x + this.player.width < 0) {
@@ -149,6 +145,25 @@ class MyScene extends Scene {
 		}
 		if (this.player.pos.x > width) {
 			this.player.pos.x = 0;
+		}
+	}
+	// calculates and displays score.
+	displayScore() {
+		// display score.
+		// console.log(this.score);
+		textSize(32);
+		fill(0)
+		textAlign(LEFT)
+		text(round(this.score) + ' m', 10, 30);
+
+		// score calculation.
+		// when the player is above the middle of the screen.
+		if (this.player.pos.y <= height / 2) {
+			// when the player is moving upwards.
+			if (this.vel.y < 0) {
+				// add onto score.
+				this.score += deltaTime;
+			}
 		}
 	}
 
