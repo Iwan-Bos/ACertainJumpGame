@@ -26,11 +26,11 @@ class MyScene extends Scene {
 				rando2 = random(0 + this.plats[0].width / 2, 450 - this.plats[0].width / 2);
 				this.genPlat(rando2, i, 0, 230, 0, 0, 0);
 			}
-			if (rando > 70 && rando <= 95) { // brown, 25% chance.
+			if (rando > 70 && rando <= 90) { // brown, 20% chance.
 				rando2 = random(0 + this.plats[0].width / 2, 450 - this.plats[0].width / 2);
 				this.genPlat(rando2, i, 102, 51, 0, 0, 1);
 			}
-			if (rando > 95 && rando <= 100) { // blue, 5% chance.
+			if (rando > 90 && rando <= 100) { // blue, 10% chance.
 				rando2 = random(0 + this.plats[0].width / 2, 450 - this.plats[0].width / 2);
 				this.genPlat(rando2, i, 153, 204, 255, 1, 0);
 			}
@@ -68,15 +68,16 @@ class MyScene extends Scene {
 			rando2 = random(0 + this.plats[0].width / 2, 450 - this.plats[0].width / 2);
 			this.genPlat(rando2, posY, 0, 230, 0, 0, 0);
 		}
-		if (rando > 70 && rando <= 95) { // brown, 25% chance.
+		if (rando > 70 && rando <= 90) { // brown, 20% chance.
 			rando2 = random(0 + this.plats[0].width / 2, 450 - this.plats[0].width / 2);
 			this.genPlat(rando2, posY, 102, 51, 0, 0, 1);
 		}
-		if (rando > 95 && rando <= 100) { // blue, 5% chance.
+		if (rando > 90 && rando <= 100) { // blue, 10% chance.
 			rando2 = random(0 + this.plats[0].width / 2, 450 - this.plats[0].width / 2);
 			this.genPlat(rando2, posY, 153, 204, 255, 1, 0);
 		}
 	}
+	// deletes old platform and generates a new platform 
 	regenPlats() {
 		for (let i = 0; i < this.plats.length; i++) {
 			// only check the bottom most platform
@@ -88,6 +89,7 @@ class MyScene extends Scene {
 			}
 		}
 	}
+	// moves the "camera" with the player when it gains new height.
 	cameraMove() {
 		if (this.player.pos.y <= height / 2) {
 			if (this.vel.y < 0) { // jumping.
