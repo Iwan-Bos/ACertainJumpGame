@@ -1,9 +1,11 @@
 // p5.disableFriendlyErrors = true;
+"use strict"
+
 function setup() {
     // create the scene in which all will take place.
-    myScene = new MyScene(1200, 900);
+    this.myScene = new MyScene(undefined, undefined, 450, 900);
     // call MyScene.setupScene().
-    myScene.setup();
+    this.myScene.setup();
 }
 
 function draw() {

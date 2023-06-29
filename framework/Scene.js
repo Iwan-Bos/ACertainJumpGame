@@ -2,9 +2,9 @@
 
 class Scene extends Entity {
     // Scene constructor.
-    constructor(width, height, posX, posY, rotZ) {
+    constructor(x, y, width, height) {
         // super calls the parent constructor.
-        super(posX, posY, rotZ);
+        super(x, y, width, height);
         // create canvas, WEBGL for 3D, omit for 2D(, WEBGL disables 2D functions).
         createCanvas(width, height);
     }
