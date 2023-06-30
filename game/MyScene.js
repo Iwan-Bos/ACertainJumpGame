@@ -16,6 +16,8 @@ class MyScene extends Scene {
 	}
 
 	setup() {
+		// load background image.
+		this.BG = loadImage('assets/BG.png');
 		// generates the starting platforms.
 		// multiple layers of platforms at once bottom to top with 2 garantueed platforms
 		this.genPlat(width / 2, 850, 255, 255, 0, 0, 0);
@@ -39,11 +41,11 @@ class MyScene extends Scene {
 		this.player = new Player(width / 2, 700, 50, 50);
 		this.children.push(this.player);
 		// set the framerate
-		frameRate(360)
+		frameRate(360);
 	}
 
 	draw() {
-		background(250); // draw background, acts as a canvas clearer.
+		background(this.BG, 255); // draw background, acts as a canvas clearer.
 		// call draw function of every child and platform of the scene.
 		for (let i = 0; i < this.children.length; i++) { this.children[i].draw(); }
 		for (let i = 0; i < this.plats.length; i++) { this.plats[i].draw(); }
@@ -159,13 +161,16 @@ class MyScene extends Scene {
 	}
 	// calculates and displays score.
 	displayScore() {
+		// box for score.
+		fill(147, 108, 108);
+		rect(0, 0, 450, height / 23);
 		// display score.
 		textSize(32);
-		fill(0)
-		textAlign(LEFT)
+		fill(0);
+		textAlign(LEFT);
 		text(round(this.score) + ' m', 10, 30);
 		// display highscore
-		textAlign(RIGHT)
+		textAlign(RIGHT);
 		text(round(localStorage.getItem('highscore')) + ' m', width - 10, 30);
 
 
@@ -185,6 +190,14 @@ class MyScene extends Scene {
 		if (!once) {
 			// when player falls offscreen.
 			if (this.player.pos.y - this.player.height / 2 > height) {
+				// display death message.
+				textSize(32);
+				fill(0);
+				textAlign(CENTER);
+				text('you died!', width / 2, height / 2);
+				textSize(25);
+				text('press F5 to restart.', width / 2, height / 2 + 25);
+
 				try {
 					// if highscore exists.
 					if (localStorage.getItem('highscore') != null) {
