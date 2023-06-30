@@ -53,6 +53,7 @@ class MyScene extends Scene {
 		this.wrapEdges();
 		this.regenPlats();
 		this.displayScore();
+		this.updateHighscore();
 	}
 
 	// generates a new platform with given parameters.
@@ -159,11 +160,14 @@ class MyScene extends Scene {
 	// calculates and displays score.
 	displayScore() {
 		// display score.
-		// console.log(this.score);
 		textSize(32);
 		fill(0)
 		textAlign(LEFT)
 		text(round(this.score) + ' m', 10, 30);
+		// display highscore
+		textAlign(RIGHT)
+		text(round(localStorage.getItem('highscore')) + ' m', width - 10, 30);
+
 
 		// score calculation.
 		// when the player is above the middle of the screen.
@@ -175,5 +179,28 @@ class MyScene extends Scene {
 			}
 		}
 	}
-
+	// 
+	updateHighscore() {
+		let once = 0;
+		if (!once) {
+			// when player falls offscreen.
+			if (this.player.pos.y - this.player.height / 2 > height) {
+				try {
+					// if highscore exists.
+					if (localStorage.getItem('highscore') != null) {
+						// set highscore.
+						if (localStorage.getItem('highscore') < this.score) {
+							localStorage.setItem('highscore', this.score);
+						}
+					} else {
+						// if highscore absent, create the fist one.
+						localStorage.setItem('highscore', this.score);
+					}
+				} catch (QuotaExceededError) {
+					console.log('Failed to store highscore, storing could fail if, e.g., the user has disabled storage for the site, or if the quota has been exceeded.');
+				}
+				once = 1;
+			}
+		}
+	}
 }
