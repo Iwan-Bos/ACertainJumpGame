@@ -33,7 +33,12 @@ class Platform extends Entity {
         // move behaviour(, mainly blue platforms).
         if (this.move == 1) {
             this.pos.x += this.vel * deltaTime;
-            if (this.pos.x > width - this.width / 2 || this.pos.x < 0 + this.width / 2) {
+            if (this.pos.x > width - this.width / 2) {
+                this.pos.x = width - this.width / 2;
+                this.vel *= -1;
+            }
+            if (this.pos.x < this.width / 2) {
+                this.pos.x = this.width / 2;
                 this.vel *= -1;
             }
         }
