@@ -124,18 +124,25 @@ class MyScene extends Scene {
 		// when to jump off of a platform.
 		// only when moving down to prevent jumping off 20 platforms in a row.
 		if (this.vel.y >= 0) {
-			// does both the x and y pos check at once.
+			// loop through all platforms in plats[].
 			for (let i = 0; i < this.plats.length; i++) {
-				const plat = this.plats[i];
-				const player = this.player;
+				const plat = this.plats[i]; // for simplification.
+				const player = this.player; // for simplification.
+				// big platform contact check.
 				if (player.pos.x + player.width / 2 >= plat.pos.x - plat.width / 2
 					&& player.pos.x - player.width / 2 <= plat.pos.x + plat.width / 2
 					&& plat.pos.y - player.pos.y <= 35
 					&& plat.pos.y - player.pos.y > 0
 				) {
-					this.vel.y = -gravity * 50;
-					// TODO: find out which platform type is being stood on, 
-					// if it is brown stop drawing and colliding the platform after a short delay.
+					// only allow jumping when jumpedOn is 0.
+					if (!plat.jumpedOn) {
+						// make the player jump.
+						this.vel.y = -gravity * 50;
+					}
+					// set jumpedOn to 1 for brown platforms after contact.
+					if (plat.destroy == 1) {
+						plat.jumpedOn = 1;
+					}
 				}
 			}
 		}

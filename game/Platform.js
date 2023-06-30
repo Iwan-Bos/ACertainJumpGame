@@ -15,18 +15,21 @@ class Platform extends Entity {
         // behaviours.
         this.move = move;
         this.destroy = destroy;
+        this.jumpedOn = 0;
         // movement.
         this.vel = .25;
     }
 
     draw() {
-        fill(this.red, this.green, this.blue);
-        rect(this.pos.x - this.width / 2,
-            this.pos.y - this.height / 2,
-            this.width,
-            this.height,
-            500
-        );
+        if (!this.jumpedOn) {
+            fill(this.red, this.green, this.blue);
+            rect(this.pos.x - this.width / 2,
+                this.pos.y - this.height / 2,
+                this.width,
+                this.height,
+                500
+            );
+        }
         // move behaviour(, mainly blue platforms).
         if (this.move == 1) {
             this.pos.x += this.vel * deltaTime;
