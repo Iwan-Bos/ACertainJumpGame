@@ -184,20 +184,13 @@ class MyScene extends Scene {
 			}
 		}
 	}
-	// 
+	// updates highscore when score is the highest, also displays death message.
 	updateHighscore() {
 		let once = 0;
 		if (!once) {
 			// when player falls offscreen.
 			if (this.player.pos.y - this.player.height / 2 > height) {
-				// display death message.
-				textSize(32);
-				fill(0);
-				textAlign(CENTER);
-				text('you died!', width / 2, height / 2);
-				textSize(25);
-				text('press F5 to restart.', width / 2, height / 2 + 25);
-
+				this.displayDeath();
 				try {
 					// if highscore exists.
 					if (localStorage.getItem('highscore') != null) {
@@ -215,5 +208,14 @@ class MyScene extends Scene {
 				once = 1;
 			}
 		}
+	}
+	// displays death message.
+	displayDeath() {
+		textSize(32);
+		fill(0);
+		textAlign(CENTER);
+		text('you died!', width / 2, height / 2);
+		textSize(25);
+		text('press F5 to restart.', width / 2, height / 2 + 25);
 	}
 }
