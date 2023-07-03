@@ -49,7 +49,7 @@ class MyScene extends Scene {
 		// call draw function of every child and platform of the scene.
 		for (let i = 0; i < this.children.length; i++) { this.children[i].draw(); }
 		for (let i = 0; i < this.plats.length; i++) { this.plats[i].draw(); }
-		// all of the functionality functions.
+		// all of the functionality methods.
 		this.playerMove();
 		this.cameraMove();
 		this.wrapEdges();
